@@ -1,0 +1,19 @@
+.homeContent {
+  position: absolute;
+  top: 47px;
+  bottom: 55px;
+  left: 0px;
+  right: 0px;
+}
+
+.homeBar {
+  position: absolute;
+  right: 0;
+  left: 0;
+  z-index: 10;
+  height: 47px;
+  background-color: white;
+  border-bottom: 1px solid #dddddd;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}

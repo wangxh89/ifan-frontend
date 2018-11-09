@@ -1,0 +1,119 @@
+/* 整体居中 */
+.cate-content {
+  padding-top: 20px;
+  padding-right: 12px;
+  padding-left: 12px;
+  overflow: auto;
+  text-align: center;
+  color: #fff;
+  line-height: normal;
+  background: url('../img/menu/bg.jpg') no-repeat;
+  background-size: cover;
+}
+
+.cate-cell {
+  padding-bottom: 12px;
+}
+
+/* 每个图片外围的高度与宽度 */
+.title-o {
+  width: 165px;
+  height: 58px;
+  padding: 6px 8px 10px 12px;
+  border-radius: 0 0 10px 10px;
+  background-color: rgba(0, 0, 0, .6);
+  color: #e9e9e9;
+  font-size: 17px;
+  line-height: 24px;
+  margin-left: -5px;
+  margin-bottom: -4px;
+}
+
+.cover-img {
+  position: relative;
+  padding-top: 63.03%;
+  height: 3px;
+  display: -webkit-box;
+  display: -ms-box;
+  display: box;
+  display: -webkit-flexbox;
+  display: -ms-flexbox;
+  display: flexbox;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -webkit-flex-align: end;
+  -ms-flex-align: end;
+  flex-align: end;
+  -webkit-box-align: end;
+  -ms-box-aling: end;
+  box-align: end;
+  -webkit-align-items: flex-end;
+  -ms-align-items: flex-end;
+  align-items: flex-end;
+  border: 1px solid #e9e9e9;
+  border-radius: 6px;
+
+}
+
+.icon-recommend {
+  background: url("../img/festival/tj.png") no-repeat;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+@media screen and (min-width: 480px) {
+  .cover-img {
+    margin: 0 auto;
+    border: 1px solid #e9e9e9;
+    border-radius: 6px;
+  }
+}
+
+.total-amount {
+  font-size: 30px;
+  line-height: normal;
+}
+.order-amount {
+  font-size: 25px;
+  margin-top: 30px;
+  display: none;
+}
+
+.order-amount.visible {
+  display: block;
+}
+
+.countdown-wrapper {
+  display: none;
+}
+.countdown-wrapper.visible {
+  display: block;
+}
+.countdown-timer {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-top: 45px;
+  height: 196px;
+  background: url("../img/menu/circle.png") center center no-repeat;
+
+}
+
+.countdown-second {
+  color: #FFEB69;
+  font-size: 48px;
+}
+.countdown-hour {
+  margin-top: 12px;
+}
+
+.btn-fixed-bottom {
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  width: 80%;
+  bottom: 35px;
+}

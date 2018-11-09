@@ -1,0 +1,160 @@
+#!/bin/bash
+
+NOW=$(date "+%Y%m%d%H%M")
+UNZIP_DIR=fishmobile_source
+
+rm -rf $UNZIP_DIR
+
+git clone http://10.45.4.178:3000/huang.xinghui/fish-mobile.git  $UNZIP_DIR
+
+echo ------------ git clone done !
+
+cd $UNZIP_DIR
+
+#npm install
+#echo ---------- grunt npm install ok
+cp -rf ../base/fishmobile/node_modules ./
+echo -----------copy  grunt npm node_modules ok
+
+#grunt
+echo ----------- grunt contact file ok
+
+cp -rf ../base/fishmobile/config.xml ./config.xml
+
+COMMON_PROJECT_NAME=$(grep "<name>" config.xml -A 0 --binary-files=text | sed -E -e "s/(^.*<name>)//" -e "s/(<.*)//")
+echo ---------project name is  $COMMON_PROJECT_NAME
+
+cd ..
+
+#----create project
+CORDOVA_DIR_NAME=${COMMON_PROJECT_NAME}
+
+if [ -d $CORDOVA_DIR_NAME ]; then
+  rm -rf $CORDOVA_DIR_NAME
+  echo remove $CORDOVA_DIR_NAME successfully
+fi
+
+
+cordova create $CORDOVA_DIR_NAME com.ztesoft.zsmart.test $COMMON_PROJECT_NAME
+cd $CORDOVA_DIR_NAME
+
+#such as /Users/spy/Documents/workspace/cordovaTest
+BUILD_HOME=$(pwd -P)
+IOS_HOME=${BUILD_HOME}/platforms/ios
+ANDROID_HOME=${BUILD_HOME}/platforms/android
+
+#----replace config.xml and copy www directory
+cp -rf ../base/fishmobile/config.xml ./config.xml
+cp -rf ../base/fishmobile/ant.properties ./ant.properties
+cp -rf ../base/fishmobile/distribution.mobileprovision ./distribution.mobileprovision
+cp -rf ../base/fishmobile/release-key.keystore ./release-key.keystore
+mkdir www
+cp -rf ~/Downloads/dist   ./www/
+cp -rf ../$UNZIP_DIR/examples ./www/
+cp -rf ../$UNZIP_DIR/js ./www/
+
+#----copy hooks to project
+#cp -r ../base/before_compile  ./hooks/
+
+#echo copy hooks successfully
+
+#----add platforms
+cordova platform add android
+cordova platform add ios
+
+#mv ${ANDROID_HOME}/AndroidManifest.xml ${ANDROID_HOME}/myAndroidManifest.xml
+#cp -rf ../base/AndroidManifest.xml $ANDROID_HOME
+
+echo -e "\n" ============add plugins========"\n"
+#cordova plugin add /Users/spy/Downloads/cordova/cordova-plugin-device-3.0.0
+#cordova plugin add /Users/spy/Downloads/cordova/cordova-plugin-battery-status-3.0.0
+#cordova plugin add /Users/spy/Downloads/cordova/cordova-plugin-camera-3.0.0
+#cordova plugin add /Users/spy/Downloads/cordova/cordova-plugin-contacts-3.0.0
+#cordova plugin add /Users/spy/Downloads/cordova/cordova-plugin-dialogs-3.0.0
+#cordova plugin add /Users/spy/Downloads/cordova/cordova-plugin-file-transfer-3.0.0
+#cordova plugin add /Users/spy/Downloads/cordova/cordova-plugin-geolocation-3.0.0
+#cordova plugin add /Users/spy/Downloads/cordova/cordova-plugin-globalization-3.0.0
+#cordova plugin add /Users/spy/Downloads/cordova/cordova-plugin-vibration-3.0.0
+
+#cordova plugin add /Users/spy/Downloads/cordova/cordova-plugin-device-motion-3.0.0
+#cordova plugin add /Users/spy/Downloads/cordova/cordova-plugin-device-orientation-3.0.0
+#cordova plugin add /Users/spy/Downloads/cordova/cordova-plugin-inappbrowser-3.0.0
+#cordova plugin add /Users/spy/Downloads/cordova/cordova-plugin-media-3.0.0
+#cordova plugin add /Users/spy/Downloads/cordova/cordova-plugin-media-capture-3.0.0
+#cordova plugin add /Users/spy/Downloads/cordova/cordova-plugin-network-information-3.0.0
+#cordova plugin add /Users/spy/Downloads/cordova/cordova-plugin-splashscreen-3.0.0
+#cordova plugin add /Users/spy/Downloads/cordova/cordova-plugin-statusbar-master
+#cordova plugin add /Users/spy/Downloads/cordova/PhoneGap-SoftKeyboard-master
+
+echo -e "\n"=================== Build Android Package Begin ==================="\n"
+
+cp -rf ant.properties ${ANDROID_HOME}/ant.properties
+cordova build android --release
+
+#cd ${ANDROID_HOME}/ant-build/
+#APK_FILE_NAME=$(ls *-release.apk) 
+#we have known it.
+cp ${ANDROID_HOME}/ant-build/${COMMON_PROJECT_NAME}-release.apk ./${COMMON_PROJECT_NAME}.apk
+
+echo -e "\n"=================== Build Android Package End  ==================="\n\n\n\n"
+
+
+
+
+echo -e "\n"=================== Build IOS Begin ==================="\n"
+
+XCODEPROJ=$(ls $IOS_HOME | grep .xcodeproj  )
+PROJECT_NAME=$(basename "$XCODEPROJ" .xcodeproj)
+
+echo -e "\n"================remove ios icons and screens ============="\n"
+#rm -rf platforms/ios/$PROJECT_NAME/Resources/icons/*
+#rm -rf platforms/ios/$PROJECT_NAME/Resources/splash/*
+
+
+
+CODE_SIGN_IDENTITY=iPhone\ Distribution:\ ZTEsoft\ Technology\ Co.,\ Ltd
+PROVISIONING_PROFILE_PATH=$(ls "$BUILD_HOME" | grep .mobileprovision)
+OUT_PUT_PATH=$BUILD_HOME
+PROFILE_UUID=$(grep "<key>UUID</key>" "$PROVISIONING_PROFILE_PATH" -A 1 --binary-files=text | sed -E -e "/<key>/ d" -e "s/(^.*<string>)//" -e "s/(<.*)//")
+
+echo ===========BUILD_HOME=$BUILD_HOME
+echo ===========UUID=$PROFILE_UUID
+echo ===========PROJECT_NAME=$PROJECT_NAME
+
+
+cordova build ios --device
+
+
+xcrun -sdk iphoneos PackageApplication -v platforms/ios/build/device/${PROJECT_NAME}.app -o ${OUT_PUT_PATH}/${PROJECT_NAME}.ipa --sign "${CODE_SIGN_IDENTITY}" --embed ${PROVISIONING_PROFILE_PATH}
+
+echo -e "\n"=================== Build IOS End ==================="\n"
+
+
+echo -e '\n'=================== upload install app begin ==============='\n'
+
+ssh ebs@10.45.5.173 > /dev/null 2>&1 <<eeooff
+
+cd sso/nginx/html/download
+mv fishmobile.apk fishmobile.apk.$(date "+%Y%m%d%H%M")
+mv fishmobile.ipa fishmobile.ipa.$(date "+%Y%m%d%H%M")
+mv *.*.* ../backup/
+
+exit
+
+eeooff
+echo -e 'backup ifan setup ok\n'
+
+cd $OUT_PUT_PATH
+
+ftp ftp://ebs:ebs@10.45.5.173  > /dev/null 2>&1 <<eeooff
+cd sso/nginx/html/download
+put fishmobile.apk
+put fishmobile.ipa
+quit
+
+eeooff
+echo -e 'ftp files ok\n'
+
+
+echo -e '\n'=================== upload install app end ================'\n'
+echo -e "\e[1;42m Build Cordova Successfully \e[0m"

@@ -1,0 +1,489 @@
+/*全局样式*/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video, input, button {
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: 0;
+    font-family: 'Microsoft YaHei';
+    font-size: 14px;
+    vertical-align: baseline;
+}
+
+a,
+a:active {
+    color: #e8e7e7;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    width: 100%;
+}
+
+.frame {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    bottom: 0;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+.bar-nav {
+    background-color: #242429;
+    border-bottom: none;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.title {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 47px;
+    color: #e8e7e7;
+    margin: auto;
+}
+
+.search-container {
+    display: table;
+    width: 100%;
+    padding: 6px 10px 6px 10px;
+    background-color: #f2f2f2;
+    position: relative;
+    height: 47px;
+}
+
+input[type="search"] {
+    margin-bottom: 0px;
+    border: 1px solid #e1e1e1;
+    padding-left: 30px;
+}
+
+.content > .table-view:first-child {
+    margin-top: 0px;
+    border-top: none;
+}
+
+.bar-tab {
+    height: 55px;
+    background-color: #F3F2F0;
+    border-top: 0;
+}
+
+.bar-tab .tab-item .icon ~ .tab-label {
+    font-size: 13px;
+}
+
+.bar-tab .tab-item.active,
+.bar-tab .tab-item:active {
+    color: #fff;
+    background-color: #FF6700;
+}
+
+.bar-tab .tab-item .icon {
+    margin-bottom: 2px;
+}
+
+.bar-tab ~ .content {
+    padding-bottom: 55px;
+}
+
+/*-------popover--------------------------*/
+.popover {
+    width: 160px;
+    margin-right: 5px;
+    right: 0%;
+    top: 47px;
+}
+
+.popover .table-view {
+    max-height: 260px;
+    background-color: #242429;
+    /*border-top: 1px solid #5d5d5d;*/
+    border-radius: 0;
+}
+
+.popover .table-view-cell > a:not(.btn) {
+    color: #c8c6c6;
+    font-size: 16px;
+}
+
+.popover .table-view-cell > a:not(.btn):active {
+    background-color: #242429;
+}
+
+.popover .table-view-cell {
+    padding: 11px 15px 11px 15px;
+    border-bottom: 1px solid #474747;
+}
+.popover .table-view-cell:last-child{
+    border-bottom: 0;
+}
+
+.popover:before {
+    top: -12px;
+    border-right: 12px solid transparent;
+    border-bottom: 14px solid #242429;
+    border-left: 12px solid transparent;
+}
+
+.popover ~ .backdrop {
+    background-color: transparent;
+}
+
+.front {
+    z-index: 30;
+}
+
+/*-------icon---------------------*/
+.icon-shake {
+    background: url(../icon/dropdown_y.png) no-repeat;
+    width: 21px;
+    height: 26px;
+    margin-top: -5px;
+}
+
+.icon-portrait {
+    width: 60px;
+    height: 60px;
+}
+
+.fa {
+    font-size: 22px;
+}
+
+.fa-fw {
+    font-size: 16px;
+    padding-right: 25px;
+    vertical-align: middle;
+    margin-top: -3px;
+}
+
+.fa-unlock-alt,
+.fa-user {
+    color: #b2b2b2;
+    padding-left: 10px;
+    font-size: 20px;
+    vertical-align: middle;
+}
+
+.fa-unlock-alt {
+    padding-left: 7px;
+}
+
+.bar-nav .fa-user {
+    font-size: 22px;
+    color: #767479;
+    padding: 2px 14px 0 8px;
+    vertical-align: initial;
+}
+.fa-user.active {
+  color: #fff;
+}
+.fa-angle-left {
+    color: #e8e7e7;
+    font-size: 30px;
+    margin-top: -4px;
+    padding-left: 10px;
+}
+
+.fa-search {
+    position: absolute;
+    left: 20px;
+    top: 15px;
+    font-size: 18px;
+    display: table-cell;
+    color: #bfbfbf;
+}
+
+.fa-thumbs-o-up,
+.fa-thumbs-o-down {
+    padding-right: 5px;
+    font-size: 16px;
+}
+.fa-clock-o{
+    vertical-align: middle;
+    margin-top: -4px;
+}
+
+.table-view-cell .fa-angle-right {
+    float: right;
+    color: #bbb;
+    font-size: 18px;
+}
+
+.table-view-cell .fa-angle-right:before {
+    position: absolute;
+    top: 50%;
+    display: inline-block;
+    line-height: 1;
+    color: #bbb;
+    text-decoration: none;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.fa-spinner.fa-spin {
+    font-size: 20px;
+    color: #bab9b9;
+    line-height: 33px;
+    vertical-align: middle;
+}
+
+.fa-arrow-circle-up,
+.fa-arrow-circle-down {
+    vertical-align: middle;
+    margin-top: -4px;
+}
+
+/*-----------refresh---------------*/
+.ui-refresh .ui-refresh-up,
+.ui-refresh .ui-refresh-down {
+    background: #fff;
+    padding: 1em 10px;
+    font-size: 14px;
+    color: #888;
+    text-align: center;
+}
+
+.ui-refresh .ui-refresh-up .ui-loading,
+.ui-refresh .ui-refresh-down .ui-loading {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    -webkit-background-size: 25px 25px;
+    vertical-align: middle;
+}
+
+.ui-refresh .ui-refresh-up .ui-refresh-label,
+.ui-refresh .ui-refresh-down .ui-refresh-label {
+    display: inline-block;
+    vertical-align: middle;
+    color: #2E435D;
+}
+
+/*--------table view--------------*/
+.table-view {
+    border-top: none;
+    margin-bottom: 0px;
+}
+
+.table-view-cell {
+    border-bottom: 1px solid #e5e4e4;
+    padding-right: 23px;
+}
+
+.table-view-cell > a:not(.btn) {
+    line-height: 30px;
+    word-wrap: break-word;
+    margin-right: -23px;
+}
+
+.table-view-cell > a:not(.btn):active {
+    background-color: #dfdede;
+}
+
+/*--------------card-------------------------------*/
+.card {
+    padding: 4px;
+    background-color: #f2f2f2;
+    border: 1px solid #e9e9e9;
+}
+
+.card > p {
+    color: #595a5c;
+    padding: 4px;
+    word-wrap: break-word;
+}
+
+/*----------comment-container----------------------*/
+.comment-container {
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    height: 50px;
+    z-index: 1;
+    background-color: #ddd;
+}
+
+.comment-container > .comment-input {
+    float: left;
+    margin-left: 4%;
+    margin-top: 6px;
+    width: 82%;
+    height: 35px;
+    border: 1px solid #e1e1e1;
+    border-radius: 4px;
+}
+.send-btn{
+    display: inline-block;
+    height: 100%;
+    width: 14%;
+}
+.send {
+    margin-top: 14px;
+    margin-left: 25%;
+    font-size: 19px;
+    color: #a2a2a2;
+    cursor: pointer;
+}
+
+/*------------checkbox&radiobox-----------------------------------*/
+.ui-checkbox,
+.ui-radiobox {
+    display: block;
+    padding: 0;
+    height: 40px;
+}
+
+.ui-checkbox:after,
+.ui-radiobox:after{
+    content:"."; 
+    display:block; 
+    height:0; 
+    visibility:hidden; 
+    clear:both;
+}
+
+.ui-checkbox input,
+.ui-radiobox input {
+    position: absolute;
+    display: block;
+    z-index: 1;
+    width: 40px;
+    height: 40px;
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    cursor: pointer;
+    margin-left: 5px;
+    opacity: 0;
+
+}
+
+.ui-checkbox-label,
+.ui-radiobox-label {
+    line-height: 22px;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.ui-radiobox-label:before,
+.ui-checkbox-label:before {
+    content: "";
+    width: 40px;
+    height: 40px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 40px 40px;
+    display: inline-block;
+    margin-right: 5px;
+    line-height: 22px;
+    vertical-align: middle;
+}
+
+.ui-checkbox-label:before {
+    background-image: url(../icon/checkbox.png);
+}
+
+.ui-radiobox-label:before {
+    background-image: url(../icon/radiobox.png);
+}
+
+
+.ui-checkbox input:checked + .ui-checkbox-label:before {
+    background-image: url(../icon/checkbox_checked.png);
+}
+
+.ui-radiobox-label:hover:before {
+    background-image: url(../icon/radiobox_hover.png);
+}
+
+.ui-radiobox input:disabled + .ui-radiobox-label:before {
+    background-image: url(../icon/radiobox_disabled.png);
+}
+
+.ui-radiobox input:checked + .ui-radiobox-label:before {
+    background-image: url(../icon/radiobox_checked.png);
+}
+
+.ui-radiobox input[disabled]:checked + .ui-radiobox-label:before {
+    background-image: url(../icon/radiobox_disabled_checked.png);
+}
+
+.ui-form-horizontal > .ui-checkbox,
+.ui-form-horizontal > .ui-radiobox {
+    position: relative;
+    float: right;
+}
+
+/*-------btn-------------------------------------*/
+.btn-block,
+.btn,
+.btn:active,
+.btn.active {
+    background-color: #009fe3;
+    color: #fff;
+    border-radius: 6px;
+    border: none;
+    padding: 13px 0;
+}
+
+.btn-inline {
+    width: 100px;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.btn-group {
+    display: inline-block;
+}
+
+.btn-group .btn + .btn {
+    margin-left: 10px;
+}
+
+/*---------dialog-------------------------------------*/
+.dialog {
+    position: relative;
+    z-index: 20;
+    border-radius: 6px;
+    width: 85%;
+    margin: auto;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    background-color: #fff;
+    -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, .1);
+    box-shadow: 0 0 15px rgba(0, 0, 0, .1);
+    opacity: 0;
+    -webkit-transition: opacity .25s linear;
+    -moz-transition: opacity .25s linear;
+    transition: opacity .25s linear;
+}
+
+.dialog.visible {
+    opacity: 1;
+}
+
+.confirm {
+    text-align: center;
+}
+
+.confirm .btn {
+    width: 80px;
+    font-size: 14px;
+}
+
+.confirm .btn-group {
+    margin-top: 20px;
+}
+
+.confirm > p {
+    font-size: 16px;
+}

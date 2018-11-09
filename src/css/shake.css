@@ -1,0 +1,125 @@
+.shake-content {
+    padding-bottom: 0px;
+    background-color: #595a5c;
+}
+.shake-view{
+    border-bottom:0;
+    background-color: #727476;
+}
+
+.shake-up {
+    width: 100%;
+    height: 154px;
+    position: absolute;
+    top: 50%;
+    margin-top: -154px;
+    text-align: center;
+}
+
+.shake-img {
+    width: 226px;
+    height: 154px;
+}
+
+.shake-down {
+    width: 100%;
+    height: 154px;
+    position: absolute;
+    top: 50%;
+    margin-top: 0px;
+    text-align: center;
+}
+
+.shake-up-line {
+    margin-top: -4px;
+    height: 1px;
+    background: url(../icon/shake_up_line.png) 1px repeat-x;
+}
+
+.shake-down-line {
+    height: 1px;
+    background: url(../icon/shake_down_line.png) 1px repeat-x;
+}
+
+.ui-dialog-btns {
+    margin-top: 0px;
+    display: none;
+}
+
+.shake-menu-pic {
+    width: 110px;
+    height: 80px;
+    border-radius: 4px;
+}
+
+.shake-menu-name {
+    margin-top: 5px;
+    font-size: 16px;
+    display: block;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.shake-price {
+    color: #fff;
+    font-size: 15px;
+}
+
+.shake-flavor {
+    color: #fff;
+    margin-right: 15px;
+    font-size: 15px;
+}
+
+.shake-result {
+    position: relative;
+    margin: 0 auto;
+    padding-top: 10px;
+    background-color: #727476;
+}
+
+.shake-cell {
+    border-bottom-color: #868787;
+}
+.award-view{
+    height: 60px;
+    color: #fff;
+    text-align: center;
+    background-color: #727476;
+    line-height: 60px;
+}
+.award-result.visible{
+    opacity: .6;
+    border-radius: 0;
+}
+.fa-award{
+    font-size: 25px;
+    margin-right: 10px;
+    vertical-align: middle;
+    line-height: 60px;
+}
+
+/********动画效果*******/
+.shake-up-style {
+    transition: All 0.6s ease-in-out;
+    -webkit-transition: All 0.6s ease-in-out;
+
+    transform: translate(0, -80px);
+    -webkit-transform: translate(0, -80px);
+}
+
+.shake-orgin-style {
+    transition: All 0.6s ease-in-out;
+    -webkit-transition: All 0.6s ease-in-out;
+
+    transform: translate(0, 0px);
+    -webkit-transform: translate(0, 0px);
+}
+
+.shake-down-style {
+    transition: All 0.6s ease-in-out;
+    -webkit-transition: All 0.6s ease-in-out;
+
+    transform: translate(0, 80px);
+    -webkit-transform: translate(0, 80px);
+}

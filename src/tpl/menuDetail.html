@@ -1,0 +1,48 @@
+<script type="text/template" id="tpl-menuDetail">
+    <div class="content menu-detail-content">
+
+
+        <div id="menuCommentList">
+            <div class="menu-detail-slider">
+                <img src="<%=curMenuItem.coverImg['path']%>" alt="<%=curMenuItem.coverImg['name']%>">
+            </div>
+            <div id="divMenuItemInfo" class="menu-detail-info">
+                <div id="menuBasicInfo" class="menu-detail-basic-info">
+                    <p class="menu-detail-text-info"><%=curMenuItem.menuname%></p>
+                    <span class="menu-detail-text-info menu-detail-margin"><%=curMenuItem.typeName%></span>
+                    <span class="menu-detail-text-info">￥<%=curMenuItem.price%></span>
+                </div>
+                <div id="divRate" class="menu-detail-rate-container">
+                    <div id="divStarRating" class="stars star-rating">
+                    </div>
+                    <button id="btnGood" class="menu-detail-btn-rate"><i class="fa fa-thumbs-o-up"></i>赞</button>
+                    <button id="btnBad" class="menu-detail-btn-rate"><i class="fa fa-thumbs-o-down"></i>踩</button>
+                </div>
+            </div>
+            <ul class="table-view menu-detail-view">
+            </ul>
+            <div class="menu-list-pull-up ziscroll-pull-up" id="commentPullUp">
+                <i class="fa fa-arrow-circle-up"></i>
+                <span>上拉获取更多</span>
+            </div>
+        </div>
+        <div id="divComment" class="comment-container">
+            <input type="text" id="commentInput" placeholder="评论" class="comment-input">
+            <div id="btnSubmitComment" class="send-btn">
+                <i class="fa fa-send send" ></i>
+            </div>
+        </div>
+
+    </div>
+    
+</script>
+<script type="text/template" id="tpl-menu-comment">
+    <li class="table-view-cell media" >
+        <div class="media-object pull-left">
+            <img class="icon-portrait" src="<%=userIcon%>">
+        </div>
+        <div class="media-body">
+            <p><%=comment%></p>
+        </div>
+    </li>
+</script>

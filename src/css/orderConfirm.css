@@ -1,0 +1,99 @@
+.order-content {
+    width: 90%;
+    margin: auto;
+}
+.order-table-view{
+    border: none;
+}
+.order-table-view-cell{
+    border-bottom: 1px solid #cdcdcd;
+    padding: 8px 0px;
+}
+.itemName{
+    margin-bottom: 15px;
+}
+.order-right {
+    text-align: right;
+    float: right;
+}
+.order-img-size{
+    width: 60px;
+    height: 60px;
+    max-width: 100%;
+    border-radius: 6px;
+}
+.order-right > .order-input{
+    margin-bottom: 0px;
+    padding: 2px 2px 2px 4px;
+    height: 30px;
+    width: 31px;
+}
+.user-info{
+    background: url("../img/menu/tu.png") no-repeat center;
+    background-size: cover;
+    width: 100%;
+    height: auto;
+    padding: 10px;
+}
+.user-img{
+    width: 80px;
+    height: 80px;
+    margin: 10px auto;
+    display: block;
+}
+.user-name{
+    text-align: center;
+    color: #fff;
+}
+.user-phone{
+    margin: 10px auto;
+    text-align: center;
+}
+.user-phone > input{
+    color: #fff;
+    background-color: transparent;
+    width: 110px;
+    padding: 2px;
+    margin-bottom: 0;
+}
+.check-order{
+    margin: 10px 0;
+    font-size: 20px;
+}
+.cell-color{
+    background-color: #f7f7f7;
+}
+.myorder-total{
+    margin: 0;
+    font-weight: normal;
+    font-size: 18px;
+}
+.today-total{
+    color: #ff9000;
+    font-size: 22px;
+}
+.myorder-item{
+    font-size: 22px;
+}
+.item-info{
+    margin-right: 10%;
+}
+.myorder-btn{
+    width: 100px;
+    height: 30px;
+    padding: 0;
+    vertical-align: middle;
+    line-height: 30px;
+}
+.myorder-btn:active{
+    padding: 0;
+}
+.order-state{
+    float: right;
+}
+.order-top{
+    border-top: 1px solid #e5e4e4;
+}
+.one-order{
+    margin-bottom: 10px;
+}

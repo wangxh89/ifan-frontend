@@ -1,0 +1,48 @@
+<script type="text/template" id="tpl-myOrder">
+   <div class="content">
+        <ul class="table-view order-table-view" id="divOrderList">
+        </ul>
+    </div>
+</script>
+<script type="text/template" id="myOrder_rowTemplate">
+    <%_.each(liList, function(orderInADay) {%>
+            <li class="table-view-cell cell-color order-top">
+                <span class="order-date">
+                    订单时间：
+                    <%=orderInADay.orderDate%>
+                </span>
+                <span class="order-state">
+                    已完成
+                </span>
+                 <%if(orderInADay.isCancelable){ %>
+                    <a class="btn btn-cancel myorder-btn">取消订单</a>
+                <%} %>
+            </li>
+            <%_.each(orderInADay.orders,function(oneOrder){%>
+                <li id="<%=oneOrder.id%>" class="table-view-cell media cell-color">
+                    <img class="media-object pull-left order-img-size" src="<%=oneOrder.imgUrl%>"/>
+
+                    <div class="media-body">
+                        <div class="itemName myorder-item"><%=oneOrder.name%></div>
+                        <span class="item-info">数量： <%=oneOrder.count%>斤</span>
+                        <span class="item-info">单价： <%=oneOrder.price%>/斤</span>
+                    </div>
+                </li>
+            <%})%>
+            <li class="table-view-cell cell-color one-order">
+                <%if(orderInADay.isTodayOrder){ %>
+                    <div class="total myorder-total today-total">
+                <%}else{ %>
+                    <div class="total myorder-total">
+                <%} %>
+                总计： <%=orderInADay.totalInADay%>&nbsp;&nbsp;元
+                <%if(orderInADay.isDiscountOrder){ %>
+                    (已优惠2斤)
+                <%} %>
+                </div>
+            </li>
+        <%})%>
+</script>
+<script type="text/template" id="myOrder_noOrder">
+    <p class="no-order">订单数： 0</p>
+</script>

@@ -1,0 +1,41 @@
+<script type="text/template" id="tpl-orderConfirm">
+
+    <div class="content">
+      <div class="user-info">
+        <img src="img/menu/ren.png" class="user-img"></img>
+        <div class="user-name">
+          <span id="userName"></span>
+        </div>
+        <div class="user-phone">
+          <input type="number"  id="txtTelephone" placeholder="请输入手机号">
+        </div>
+      </div>
+      <div class="order-content">
+        <div class="check-order">请核对订单:</div>
+        <div id="lst">
+          <ul class="table-view order-table-view">
+
+          </ul>
+        </div>
+        <div class="total">
+          总计： <span id="confirmTotalPrice">0</span>&nbsp;&nbsp;元
+        </div>
+        <a class="btn btn-inline" id="btnCancelOrder">取消预定</a>
+        <a href="javascript:void(0);" class="btn btn-inline pull-right" id="confirmOrder">确认预定</a>
+      </div>
+    </div>
+</script>
+
+<script type="text/template" id="orderConfirm_rowTemplate">
+    <li id="<%=id%>" class="order-table-view-cell media">
+      <div class="media-object pull-left">
+        <img class="order-img-size" src="<%=imgUrl%>"/>
+      </div>
+      <div class="media-body">
+        <div class="pull-right">￥ <span><%=price%></span>&nbsp;&nbsp;元</div>
+        <div class="itemName"><%=name%></div>
+        <p class="order-right">×  <span class="order-input"><%=count%></span></p>
+      </div>
+    </li>
+</script>
+

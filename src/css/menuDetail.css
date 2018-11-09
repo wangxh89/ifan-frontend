@@ -1,0 +1,46 @@
+.menu-detail-content{
+    padding-bottom: 48px;
+    overflow: hidden;
+}
+.menu-detail-slider{
+    background-color: transparent;
+}
+.sliderImg {
+    width:480px;
+}
+.menu-detail-btn-rate{
+    height:29px;
+    width:50px;
+    border-radius: 4px;
+    background-color:#51c5d4;
+    color:#fff;
+    margin-right: 3px;
+}
+.menu-detail-view{
+    margin-bottom: 0px;
+}
+.menu-detail-info {
+    background-color: #000;
+    height: 75px;
+    width: 100%;
+    opacity: 0.7;
+    margin-top: -79px;
+}
+.menu-detail-basic-info {
+    margin-top: 10px;
+    margin-left: 18px;
+    float: left;
+    line-height: 25px;
+}
+.menu-detail-text-info{
+    color: #fff;
+    font-size: 16px;
+}
+.menu-detail-margin{
+    margin-right: 20px;
+}
+.menu-detail-rate-container{
+    margin-top: 9px;
+    margin-right: 18px;
+    float: right;
+}

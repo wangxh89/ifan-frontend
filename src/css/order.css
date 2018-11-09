@@ -1,0 +1,70 @@
+.ui-form-horizontal,
+.ui-form-label
+{
+    line-height: 30px;
+    margin-bottom: 5px;
+    text-align: left;
+}
+.order-container {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.slider {
+    background-color: transparent;
+    margin-bottom: 15px;
+}
+.line {
+    background: #e5e4e4;
+    overflow: hidden;
+    height: 1px;
+    margin-top:10px;
+}
+.total {
+    text-align: right;
+    margin-top: 10px;
+    margin-bottom: 14px;
+    font-weight: bold;
+}
+.order-total{
+    color: #fff;
+}
+.form-order > .table-view{
+    margin-bottom: 0px;
+    border:none;
+    background-color: transparent;
+}
+.form-order .table-view-cell{
+    border: none;
+    border-bottom: 1px solid #989792;
+    padding: 10px;
+}
+input[type="text"]{
+    margin-bottom: 0px;
+    padding: 2px 2px 2px 4px;
+    height: 30px;
+}
+
+.btn-order,
+.btn-order:active,
+.btn-order.active {
+    width: 100%;
+    font-size: 16px;
+    background-color: #dddddd;
+    color: #fff;
+    border-radius: 6px;
+    border: none;
+    padding: 13px 0
+}
+.no-order{
+    margin-top: 11px;
+    font-size: 20px;
+}
+.teateName{
+    margin-right: 10px;
+}
+.check-text{
+    position: absolute;
+    top: 3px;
+    left: 15px;
+}

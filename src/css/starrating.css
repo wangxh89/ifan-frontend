@@ -1,0 +1,15 @@
+.stars .fa-star-o,
+.stars .rating{
+    font-size: 18px;
+    margin-right: 5px;
+    color: #fbac02;
+}
+/*.stars .fa-star-o{
+	color: #fff;
+}
+.stars .rating{
+    color: #fbac02;
+}*/
+.star-rating{
+    margin-bottom: 5px;
+}

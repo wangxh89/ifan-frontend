@@ -1,0 +1,118 @@
+#!/bin/bash
+
+SYS_APP_ID=100
+
+echo your command is  $0 $1 $2
+if [ -z $1 ]; then
+  echo first param is null,so set default $SYS_APP_ID
+  SYS_APP_ID=${SYS_APP_ID}
+else
+  SYS_APP_ID=$1
+fi
+
+UNZIP_DIR=${SYS_APP_ID}_source
+cd $UNZIP_DIR
+
+COMMON_PROJECT_NAME=$(grep "<name>" config.xml -A 0 --binary-files=text | sed -E -e "s/(^.*<name>)//" -e "s/(<.*)//")
+echo ---------project name is  $COMMON_PROJECT_NAME
+
+cd ..
+
+#----create project
+CORDOVA_DIR_NAME=${COMMON_PROJECT_NAME}_${SYS_APP_ID}
+
+if [ -d $CORDOVA_DIR_NAME ]; then
+  rm -rf $CORDOVA_DIR_NAME
+  echo remove $CORDOVA_DIR_NAME successfully
+fi
+
+
+cordova create $CORDOVA_DIR_NAME com.ztesoft.zsmart.test $COMMON_PROJECT_NAME
+cd $CORDOVA_DIR_NAME
+
+#such as /Users/spy/Documents/workspace/cordovaTest
+BUILD_HOME=$(pwd -P)
+IOS_HOME=${BUILD_HOME}/platforms/ios
+ANDROID_HOME=${BUILD_HOME}/platforms/android
+
+#----replace config.xml and copy www directory
+cp -rf ../$UNZIP_DIR/config.xml ./config.xml
+cp -rf ../$UNZIP_DIR/ant.properties ./ant.properties
+cp -rf ../$UNZIP_DIR/distribution.mobileprovision ./distribution.mobileprovision
+cp -rf ../$UNZIP_DIR/release-key.keystore ./release-key.keystore
+rm -rf www/*
+cp -rf ../$UNZIP_DIR/www/* ./www/
+
+
+#----copy hooks to project
+cp -r ../base/* ./hooks/
+
+echo copy hooks successfully
+
+#----add platforms
+cordova platform add android
+cordova platform add ios
+
+#----add plugins
+
+echo -e "\n" ============add plugins========"\n"
+
+cordova plugin add /Users/spy/Downloads/cordova/cordova-plugin-file-3.0.0
+cordova plugin add /Users/spy/Downloads/cordova/cordova-plugin-device-3.0.0
+cordova plugin add /Users/spy/Downloads/cordova/cordova-plugin-battery-status-3.0.0
+cordova plugin add /Users/spy/Downloads/cordova/cordova-plugin-camera-3.0.0
+cordova plugin add /Users/spy/Downloads/cordova/cordova-plugin-contacts-3.0.0
+cordova plugin add /Users/spy/Downloads/cordova/cordova-plugin-dialogs-3.0.0
+cordova plugin add /Users/spy/Downloads/cordova/cordova-plugin-file-transfer-3.0.0
+cordova plugin add /Users/spy/Downloads/cordova/cordova-plugin-geolocation-3.0.0
+cordova plugin add /Users/spy/Downloads/cordova/cordova-plugin-globalization-3.0.0
+cordova plugin add /Users/spy/Downloads/cordova/cordova-plugin-vibration-3.0.0
+
+cordova plugin add /Users/spy/Downloads/cordova/cordova-plugin-device-motion-3.0.0
+cordova plugin add /Users/spy/Downloads/cordova/cordova-plugin-device-orientation-3.0.0
+cordova plugin add /Users/spy/Downloads/cordova/cordova-plugin-inappbrowser-3.0.0
+cordova plugin add /Users/spy/Downloads/cordova/cordova-plugin-media-3.0.0
+cordova plugin add /Users/spy/Downloads/cordova/cordova-plugin-media-capture-3.0.0
+cordova plugin add /Users/spy/Downloads/cordova/cordova-plugin-network-information-3.0.0
+cordova plugin add /Users/spy/Downloads/cordova/cordova-plugin-splashscreen-3.0.0
+
+
+echo -e "\n"=================== Build Android Package Begin ==================="\n"
+
+cp -rf ant.properties ${ANDROID_HOME}/ant.properties
+cordova build android --release
+
+#cd ${ANDROID_HOME}/ant-build/
+#APK_FILE_NAME=$(ls *-release.apk) 
+#we have known it.
+cp ${ANDROID_HOME}/ant-build/${COMMON_PROJECT_NAME}-release.apk ./${COMMON_PROJECT_NAME}.apk
+
+echo -e "\n"=================== Build Android Package End  ==================="\n\n\n\n"
+
+
+
+
+echo -e "\n"=================== Build IOS Begin ==================="\n"
+
+XCODEPROJ=$(ls $IOS_HOME | grep .xcodeproj  )
+PROJECT_NAME=$(basename "$XCODEPROJ" .xcodeproj)
+
+CODE_SIGN_IDENTITY=iPhone\ Distribution:\ ZTEsoft\ Technology\ Co.,\ Ltd
+PROVISIONING_PROFILE_PATH=$(ls "$BUILD_HOME" | grep .mobileprovision)
+OUT_PUT_PATH=$BUILD_HOME
+PROFILE_UUID=$(grep "<key>UUID</key>" "$PROVISIONING_PROFILE_PATH" -A 1 --binary-files=text | sed -E -e "/<key>/ d" -e "s/(^.*<string>)//" -e "s/(<.*)//")
+
+echo ===========BUILD_HOME=$BUILD_HOME
+echo ===========UUID=$PROFILE_UUID
+echo ===========PROJECT_NAME=$PROJECT_NAME
+
+
+cordova build ios --device
+
+
+xcrun -sdk iphoneos PackageApplication -v platforms/ios/build/device/${PROJECT_NAME}.app -o ${OUT_PUT_PATH}/${PROJECT_NAME}.ipa --sign "${CODE_SIGN_IDENTITY}" --embed ${PROVISIONING_PROFILE_PATH}
+
+echo -e "\n"=================== Build IOS End ==================="\n"
+
+
+

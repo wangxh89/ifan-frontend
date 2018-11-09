@@ -1,0 +1,31 @@
+<script type="text/template" id="tmpl-shake">
+  <div class="content shake-content">
+    <div class="shake-up">
+      <img src="icon/shake_up.png" class="shake-img" alt="img"/>
+
+      <div class="shake-up-line" style="display: none;"></div>
+    </div>
+    <div class="shake-down">
+      <div class="shake-down-line" style="display: none;"></div>
+      <img src="icon/shake_down.png" class="shake-img" alt="img"/>
+    </div>
+  </div>
+  <div id="shake_result" class="dialog shake-result award-result">
+    <ul class="table-view award-view">
+    </ul>
+  </div>
+</script>
+
+<script type="text/template" id="tmpl-shake-dialog-row">
+  <li class="table-view-cell media shake-cell">
+    <a href="#menuDetail?menuId=<%=id%>">
+      <img src="<%=imgPath%>" alt="img" class="media-object pull-left menu-pic"/>
+
+      <div class="media-body">
+        <span class="shake-menu-name"><%=name%></span>
+        <span class="shake-flavor"><%=taste%></span>
+        <span class="shake-price">￥<%=price%>元</span>
+      </div>
+    </a>
+  </li>
+</script>

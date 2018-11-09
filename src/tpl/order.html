@@ -1,0 +1,47 @@
+<script type="text/template" id="tpl-order">
+    <div class="content cate-content">
+      <!--定购表单 -->
+      <div id="orderForm" class="order-container">
+        <form id="formOrder" class="form-order">
+          <ul class="table-view"></ul>
+
+          <div class="total order-total">
+            总计：<span id="totalPrice" class="numfont">0</span> &nbsp;元
+          </div>
+          <a href="javascript:void(0);" id="btnOrder" class="btn btn-order"  disabled="true">预定</a>
+        </form>
+      </div>
+    </div>
+</script>
+    <script type="text/template" id="order_sliderTemplate">
+        <div class="slide-group">
+            <% _.each(imageArr, function(element) { %>
+            <div class='slide'>
+                <img src="<%= element %>">
+            </div>
+            <% }) %>
+        </div>
+        <p class="slide-dots">
+            <% _.each(imageArr, function(element, index) { %>
+            <b class="<%= (index === 0) ? 'active' : '' %>"></b>
+            <% }) %>
+        </p>
+    </script>
+
+    <script type="text/template" id="order_rowTemplate">
+        <li id="<%=id%>" class="table-view-cell">
+            <div class="ui-form-horizontal">
+                <label><span class="teateName"><%=name%></span>(<span class="price"><%=price%></span>/斤)</label>
+                <div class="ui-checkbox">
+                    <input type="checkbox" value="4" name="chkTaste" class="fourjin">
+                    <label for="chkTaste" class="ui-checkbox-label"></label>
+                    <span class="check-text">4</span>
+                </div>
+                 <div class="ui-checkbox">
+                    <input type="checkbox" value="2" name="chkTaste" class="twojin">
+                    <label for="chkTaste" class="ui-checkbox-label"></label>
+                    <span class="check-text">2</span>
+                </div>
+            </div>
+        </li>
+    </script>

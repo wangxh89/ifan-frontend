@@ -1,0 +1,67 @@
+.menu-content {
+    top: 47px;
+    overflow: hidden;
+}
+
+.ui-filterable-input {
+    display: block;
+    width: 100%;
+    height: 30px;
+    padding: 6px;
+    color: #555;
+    vertical-align: middle;
+    background-color: #fff;
+    background-image: none;
+    border: 3px solid #afdef8;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+.menu-pic {
+    width: 110px;
+    height: 80px;
+    float: left;
+    border-radius: 4px;
+}
+
+.menu-today-ready {
+    float: left;
+    margin-left: -50px;
+    margin-top: 45px;
+    width: 54px;
+    height: 32px;
+}
+
+.menu-desc {
+    margin: 20px 0 0 125px;
+}
+
+.menu-name {
+    margin-top: 6px;
+    font-size: 16px;
+    display: block;
+    color: #f97307;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.menu-price {
+    color: #595a5c;
+    font-size: 15px;
+}
+
+.menu-flavor {
+    margin-right: 20px;
+    font-size: 15px;
+}
+
+.menu-list-pull-up {
+    background: #fff;
+    height: 40px;
+    line-height: 40px;
+    padding: 5px 10px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #888;
+    text-align: center;
+}

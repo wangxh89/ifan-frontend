@@ -1,0 +1,43 @@
+<script type="text/template" id="tpl-header">
+  <header class="bar bar-nav ">
+    <% if(showBackBtn) {%>
+    <a href="javascript:historyBack()" class="icon pull-left">
+    <i class="fa fa-angle-left"></i>
+    </a>
+    <%}%>
+    <% if(showMoreBtn) {%>
+    <a class="icon pull-right" href="#popover">
+      <i class="fa fa-user <%= (localStorage.USER_TOKEN) ? 'active' : '' %>"></i>
+    </a>
+    <%}%>
+    <h1 class="title"><%=title%></h1>
+
+    <div id="popover" class="popover" >
+      <ul class="table-view">
+        <!--<li class="table-view-cell">-->
+          <!--<a href="#menuTop10">-->
+            <!--<i class="fa fa-bar-chart-o fa-fw"></i>菜谱Top10-->
+          <!--</a>-->
+        <!--</li>-->
+
+        <% if(localStorage.getItem('USER_TOKEN')) {%>
+        <li class="table-view-cell">
+          <a href="#shake">
+            <i class="fa icon-shake fa-fw"></i>摇一摇
+          </a>
+        </li>
+        <li id="myOrderDropMenu" class="table-view-cell">
+          <a href="#myOrder">
+            <i class="fa fa-file-text-o fa-fw"></i>我的订单
+          </a>
+        </li>
+        <%}%>
+        <li class="table-view-cell">
+          <a href="<%= localStorage.getItem('USER_TOKEN')? '#logout': '#login' %>" id="loginBtn">
+            <i class="fa fa-power-off fa-fw"></i><%= localStorage.getItem('USER_TOKEN')?'注销':'登录' %>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </header>
+</script>

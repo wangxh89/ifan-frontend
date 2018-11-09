@@ -1,0 +1,24 @@
+{
+  "name": "ifan",
+  "version": "0.0.1",
+  "description": "ifan mobile",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://10.45.4.178:3000/huang.xinghui/ifan-frontend.git"
+  },
+  "keywords": [
+    "ifan"
+  ],
+  "author": "ngweb-team",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-concat": "^0.4.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-inline": "~0.3.0",
+    "grunt-sed": "~0.1.1"
+  }
+}

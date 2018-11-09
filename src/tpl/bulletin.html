@@ -1,0 +1,24 @@
+<script type="text/template" id="tpl-bulletin">
+  <div class="tab-content bulletin-content" id="bulletin">
+    <!--<div style="width: 100%; text-align: center; margin-top: 20px;">正在建设中...</div>-->
+    <div class="ui-refresh" id="noticeList">
+      <ul class="table-view"></ul>
+      <div class="bulletin-list-pull-up ziscroll-pull-up">
+      <i class="fa fa-arrow-circle-up"></i>
+        <span>上拉获取更多</span>
+      </div>
+    </div>
+  </div>
+</script>
+
+<script type="text/template" id="tmpl-bulletin-item">
+  <% _.each(notices, function(element) { %>
+  <li class="table-view-cell media">
+    <a id="<%=element.id%>" href="javascript:void(0);" class="media-body">
+      <p class="bulletin-title"><%=element.title%></p>
+      <i class="fa fa-angle-right"></i>
+      <span class="bulletin-right"><%=element.date%></span>
+    </a>
+  </li>
+  <% }) %>
+</script>

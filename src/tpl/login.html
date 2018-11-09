@@ -1,0 +1,40 @@
+<script type="text/template" id="tmpl-login">
+  <header class="bar bar-nav">
+    <a href="javascript:historyBack()" class="icon pull-left">
+    <i class="fa fa-angle-left"></i>
+    </a>
+
+    <h1 class="title">爱饭</h1>
+  </header>
+
+  <div class="all">
+    <!-- 登录表单 -->
+    <div class="logo"></div>
+    <div class="login-form">
+      <div class="form-item">
+        <!--input type=number,导致input宽度不能铺满-->
+      <span class="input-group">
+        <i class="fa fa-user"></i>
+      </span>
+        <input type="text" name="username" class="input-control" id="username" autocomplete="off" placeholder="工号"
+               maxlength="10">
+      </div>
+      <div class="form-item">
+      <span class="input-group">
+        <i class="fa fa-unlock-alt"></i>
+      </span>
+        <input type="password" name="password" class="input-control" id="password" autocomplete="off" placeholder="你的ZMP密码"
+               maxlength="20">
+      </div>
+      <div class="form-item">
+        <a href="javascript:void(0)" id="btnLogin" class="btn btn-login" disabled="true">登录</a>
+      </div>
+    </div>
+  </div>
+</script>
+
+<script type="text/template" id="tmpl-loginout-bottom-menu">
+  <ul id="loginout-bottom-menu">
+    <li onclick="exit_app()">退出应用</li>
+  </ul>
+</script>

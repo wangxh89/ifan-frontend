@@ -1,0 +1,36 @@
+.bulletin-title {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 65%;
+}
+
+.bulletin-iscroll {
+    text-align: center;
+    line-height: 40px;
+    height: 40px;
+    width: 100%;
+}
+
+.bulletin-content {
+    overflow: hidden;
+}
+
+.bulletin-list-pull-up {
+    background: #fff;
+    height: 40px;
+    line-height: 40px;
+    padding: 5px 10px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #888;
+    text-align: center;
+}
+
+.bulletin-right {
+    position: absolute;
+    top: 11px;
+    right: 3.333em;
+    margin: 0;
+    font-size: 13px;
+}

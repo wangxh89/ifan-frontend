@@ -1,0 +1,40 @@
+<script type="text/template" id="tpl-boss">
+  <div id="boss" class="tab-content boss-content">
+    <div style="width: 100%; text-align: center; margin-top: 20px;">正在建设中...</div>
+    <!--<div class="ui-refresh" id="adviceList">-->
+      <!--<ul class="table-view"></ul>-->
+      <!--<div class="bulletin-list-pull-up ziscroll-pull-up">-->
+        <!--<i class="fa fa-arrow-circle-up"></i>-->
+        <!--<span>上拉获取更多</span>-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--<div class="comment-container boss-comment">-->
+      <!--<input id="adviceInput" type="text" placeholder="评论" class="comment-input">-->
+      <!--<div id="adviceSendBtn" class="send-btn">-->
+        <!--<i class="fa fa-send send" title="发送"></i>-->
+      <!--</div>-->
+    <!--</div>-->
+  </div>
+</script>
+<script type="text/template" id="tpl-boss-item">
+  <%_.each(advices, function(element) { %>
+  <li class="table-view-cell media">
+    <img class="media-object pull-left icon-portrait" src="img/boss/m_1.png">
+
+    <div class="media-body">
+                <span>
+                    <% if(element.userName) { %>
+                        <%= element.userName %>
+                    <% }  else { %>
+                        匿名用户
+                    <% } %>
+                </span>
+      <span class="pull-right"><%= element.date %></span>
+
+      <p>
+        <%= element.comment %>
+      </p>
+    </div>
+  </li>
+  <% }) %>
+</script>

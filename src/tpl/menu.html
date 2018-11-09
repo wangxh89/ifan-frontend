@@ -1,0 +1,39 @@
+<script type="text/template" id="tpl-menu">
+  <div id="menu" class="tab-content content">
+    <div style="width: 100%; text-align: center; margin-top: 20px;">正在建设中...</div>
+    <!--<div class="search-container">-->
+        <!--<i class="fa fa-search"></i>-->
+        <!--<input type="search" id="menuSearch" data-target="#menuItemList">-->
+    <!--</div>-->
+    <!--<div class="content menu-content" id="menuContent">-->
+      <!--<div id="menuItemList">-->
+        <!--<ul class="table-view">-->
+          <!---->
+        <!--</ul>-->
+        <!--<div class="menu-list-pull-up ziscroll-pull-up">-->
+            <!--<i class="fa fa-arrow-circle-up"></i>-->
+            <!--<span>上拉获取更多</span>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+  </div>
+</script>
+<script type="text/template" id="tpl-menu-item">
+    <% _.each(menus, function(element) { %>
+    <li class="table-view-cell media">
+        <a href="#menuDetail/<%= element._id %>">
+            <div class="media-object pull-left">
+                <img class="menu-pic" src="<%= element.pic %>">
+                <% if(element.todayReady) { %>
+                <img class="menu-today-ready" src="img/menu/index_list_jry.png">
+                <% } %>
+            </div>
+            <div class="media-body">
+                <span class="menu-name"><%= element.menuname %></span>
+                <span class="menu-flavor"><%= element.menuFlavorName %></span>
+                <span class="menu-price">￥<%= element.price %></span>
+            </div>
+        </a>
+    </li>
+    <% }) %>
+</script>

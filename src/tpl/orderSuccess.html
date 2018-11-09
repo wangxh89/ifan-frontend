@@ -1,0 +1,29 @@
+<script type="text/template" id="tpl-orderSuccess">
+    <div class="content order-content">
+      <div id="simleTop" class="simle-container">
+        <img src="icon/smile.png" alt="预定成功"/>
+        <span>预定成功!</span>
+      </div>
+      <div class="line line-first"></div>
+
+      <div id="content"></div>
+
+      <div class="total">
+        总计： <span id="successTotalPrice">0</span>&nbsp;元
+      </div>
+        <a href="javascript:fish.Router.navigate('home/0');" class="btn btn-inline" id="continueOrder">继续预定</a>
+      <a class="btn btn-inline pull-right" href="javascript:fish.Router.navigate('home/0');" id="cancelOrder">返回首页</a>
+    </div>
+</script>
+
+
+<script type="text/template" id="orderSuccess_rowTemplate">
+  <table class="order-table">
+    <tr>
+      <td class="td-left"><%=name%></td>
+      <td class="td-center">×<%=count%></td>
+      <td class="td-right">￥ <%=price%>元</td>
+    </tr>
+  </table>
+  <div class="line"></div>
+</script>
